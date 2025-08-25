@@ -1,5 +1,4 @@
-            - name: Install Python requirements
-  # You may pin to the exact commit or the version.
+# You may pin to the exact commit or the version.
   # uses: aabadie/action-install-python-requirements@bd1357189566c9678a47677d561b4b8e113d9787
   uses: aabadie/action-install-python-requirements@v2.0.1
   with:
@@ -54,3 +53,31 @@ print("Deutsche Übersetzung:", german_translation)
 plt.imshow(thresh, cmap='gray')
 plt.title("Segmentierte Symbole")
 plt.show()
+            - Name: Rational Test Automation Server GitHub-Aktion
+  # Sie können das genaue Commit oder die Version anheften.
+  # verwendet: IBM/devopsauto-testserver-actions@c704855bdbbae4f0df152919d00fb0bd40f67ee0
+  verwendet: IBM/devopsauto-testserver-actions@v1
+  mit:
+    # Rational Test Automation Server-URL
+    Server-URL:
+    # Offline-Token des Rational Test Automation Servers
+    offlineToken:
+    # Name des Teambereichs
+    Teambereich:
+    # Projektname
+    Projekt:
+    # Name des Zweigs, in dem der Test vorhanden ist
+    Zweig:
+    # AssetId des Tests im Rational Test Automation Server.
+    Asset-ID:
+    # Optional. Testumgebung entsprechend dem Test. Die Eingabe des Werts ist obligatorisch, wenn Sie einen API-Test ausführen möchten.
+    Umgebung: # optional
+    # Optional. Durch Komma (,) getrennte Werte von Datensätzen für den auszuführenden Job, zum Beispiel: Quelle:Ersatz;Quelle:Ersatz
+    Datensätze: # optional
+    # Optional. Dem Test entsprechende Beschriftungen. Beispiel: label1, label2
+    Beschriftungen: # optional
+    # Optional. Name der Geheimnissammlung für den auszuführenden Job.
+    secretsCollection: # optional
+    # Optional. Variablen, die dem Test entsprechen. Sie müssen die Variablen im folgenden Format eingeben: Name_der_Variable=Wert_der_Variable
+    Variablen: # optional
+          

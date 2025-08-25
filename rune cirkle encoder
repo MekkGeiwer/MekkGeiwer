@@ -1,0 +1,46 @@
+import cv2
+import numpy as np
+from matplotlib import pyplot as plt
+
+# Älteres Futhark – Runenliste (nur symbolisch als Platzhalter, 
+# echte Muster müssten mit Vorlagenbildern ergänzt werden)
+runes = {
+    "Fehu": "F", "Uruz": "U", "Thurisaz": "Th", "Ansuz": "A",
+    "Raidho": "R", "Kenaz": "K", "Gebo": "G", "Wunjo": "W",
+    "Hagalaz": "H", "Nauthiz": "N", "Isa": "I", "Jera": "J",
+    "Eihwaz": "Ei", "Perthro": "P", "Algiz": "Z", "Sowilo": "S",
+    "Tiwaz": "T", "Berkano": "B", "Ehwaz": "E", "Mannaz": "M",
+    "Laguz": "L", "Ingwaz": "Ng", "Dagaz": "D", "Othala": "O"
+}
+
+# Schritt 1: Bild laden
+img = cv2.imread("file-MdSE34DnS1Z3R5uY1eGsqZ", 0)
+
+# Schritt 2: In Graustufen + Threshold
+_, thresh = cv2.threshold(img, 128, 255, cv2.THRESH_BINARY_INV)
+
+# Schritt 3: Konturen finden (für Segmente)
+contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+print(f"Gefundene Segmente: {len(contours)}")
+
+# Platzhalter: Normalerweise hier jedes Segment extrahieren und mit Runenvorlage vergleichen
+# Für Demo: Wir simulieren eine Beispiel-Übersetzung
+
+rune_sequence = ["Ansuz", "Raidho", "Kenaz", "Isa", "Dagaz"]
+
+# Übersetzung in Buchstaben
+letters = [runes[r] for r in rune_sequence]
+word = "".join(letters)
+
+# Deutsche Bedeutung (vereinfacht für Demo)
+german_translation = "Botschaft: 'AR-KID' → steht symbolisch für Neubeginn und Erkenntnis."
+
+print("Erkannte Runenfolge:", rune_sequence)
+print("Buchstaben:", word)
+print("Deutsche Übersetzung:", german_translation)
+
+# Ergebnis visualisieren
+plt.imshow(thresh, cmap='gray')
+plt.title("Segmentierte Symbole")
+plt.show()
